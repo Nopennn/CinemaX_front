@@ -1,5 +1,4 @@
-import React, {Component, useState, useEffect} from 'react';
-import WebTorrent from "webtorrent";
+import React, {useState, useEffect} from 'react';
 import Torrent from "../components/Torrent";
 
 
@@ -31,7 +30,6 @@ const FilmPage = () => {
         console.log('DATA:', data)
         setFilm(data)
     }
-    console.log(film, 'fdgdfgdg')
 
     return (
         <div>
@@ -42,10 +40,13 @@ const FilmPage = () => {
             <div>Режиссёр: {film.directors}</div>
             <div>Актёры: {film.actors}</div>
             <p>{film.description}</p>
-            <Torrent torrent_id = {film.torrent_id}/>
+            <p>{film.torrent_id}</p>
+            <Torrent test = {film.torrent_id}/>
         </div>
     );
 
 }
+
+
 
 export default FilmPage;
