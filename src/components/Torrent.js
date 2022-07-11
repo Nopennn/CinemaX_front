@@ -1,23 +1,29 @@
 import React, {Component} from 'react';
-import WebTorrent from "webtorrent";
+import PropTypes from "prop-types";
+
 
 class Torrent extends Component {
+    static propTypes = {
+        test: PropTypes.string.isRequired
+    }
+
     state = {
         torrentInfoHash: "",
         torrentMagnetURI: "",
         torrentName: "",
         torrentProgress: "",
-        torrentFiles: []
+        torrentFiles: [],
     }
 
     componentDidMount() {
-        // Sintel, a free, Creative Commons movie
-        var torrentId = 'magnet:?xt=urn:btih:08ada5a7a6183aae1e09d831df6748d566095a10&dn=Sintel&tr=udp%3A%2F%2Fexplodie.org%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.empire-js.us%3A1337&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com&ws=https%3A%2F%2Fwebtorrent.io%2Ftorrents%2F&xs=https%3A%2F%2Fwebtorrent.io%2Ftorrents%2Fsintel.torrent'
+        const torrentId = this.props.test
+        console.log('safafaaaaaaaaaaaaaa', this.props.test)
+        const WebTorrent = require('webtorrent');
+        const client = new WebTorrent();
 
-        var WebTorrent = require('webtorrent');
-        var client = new WebTorrent();
 
         client.on('error', err => {
+            console.log(torrentId);
             console.log('[+] Webtorrent error: ' + err.message);
         });
 
@@ -46,15 +52,21 @@ class Torrent extends Component {
         });
     }
 
+
     render() {
         return (
             <div>
                 <h1>{this.state.torrentName}</h1>
+                <h4>{this.props.test}</h4>
                 <p><b>Torrent Info Hash: </b>{this.state.torrentInfoHash}</p>
                 <p><b>Torrent Progress: </b>{this.state.torrentProgress}</p>
             </div>
         );
     }
 }
+
+
+
+
 
 export default Torrent;
