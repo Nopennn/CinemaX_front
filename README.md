@@ -1,3 +1,6 @@
+# CinemaX frontend
+В репозитории находится приложение, написанное с помощью библиотеки React, представляющее собой фронтенд онлайн-кинотеатра CinemaX.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
